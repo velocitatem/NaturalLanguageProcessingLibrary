@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NaturalLanguageProcessingLibrary.Core
+namespace NaturalLanguageProcessingLibrary.Core.DependecyParser
 {
     public class Oracle
     {
@@ -20,7 +20,7 @@ namespace NaturalLanguageProcessingLibrary.Core
         public operation evaluate(Stack stack)
         {
             operation[] operations = new operation[] { operation.leftArc, operation.rightArc, operation.shift };
-            int pos = (int)(new Random().Next(0, operations.Length));
+            int pos = new Random().Next(0, operations.Length);
             return operations[pos];
         }
     }

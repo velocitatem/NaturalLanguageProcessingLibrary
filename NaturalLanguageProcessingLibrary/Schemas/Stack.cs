@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static NaturalLanguageProcessingLibrary.Core.Oracle;
+using static NaturalLanguageProcessingLibrary.Core.DependecyParser.Oracle;
 
 namespace NaturalLanguageProcessingLibrary.Schemas
 {
