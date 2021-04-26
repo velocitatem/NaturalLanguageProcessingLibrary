@@ -7,7 +7,10 @@
 NLP_ENV/                            
 UnitTests/              
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> af22473ebfc1dc33b75904fc5ffac2a76a812991
 # User-specific files
 *.rsuser
 *.suo
