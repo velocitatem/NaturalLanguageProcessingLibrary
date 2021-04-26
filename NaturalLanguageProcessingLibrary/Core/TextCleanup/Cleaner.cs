@@ -8,6 +8,6 @@ namespace NaturalLanguageProcessingLibrary.Core.TextCleanup
 {
     public interface Cleaner
     {
-        public string cleanText(String text);
+        string cleanText(String text);
     }
 }
