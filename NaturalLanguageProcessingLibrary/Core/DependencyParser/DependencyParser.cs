@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NaturalLanguageProcessingLibrary.Core
+namespace NaturalLanguageProcessingLibrary.Core.DependecyParser
 {
     public class DependencyParser
     {
