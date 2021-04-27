@@ -13,6 +13,9 @@ namespace NaturalLanguageProcessingLibrary.Schemas
 
         private HIF hif;
 
+        /// <summary>
+        /// Stack, is an object used in teh DependencyParser, for the sake of forming dependencies and workign with the data
+        /// </summary>
         public Stack()
         {
             hif = new HIF("Stack");
@@ -21,13 +24,18 @@ namespace NaturalLanguageProcessingLibrary.Schemas
         }
 
 
+        /// <summary>
+        /// Executes an operation on the stack
+        /// </summary>
+        /// <param name="operation"></param>
+        /// <returns></returns>
         public Relation executeOperations(operation operation)
         {
             int s = this.data.Count;
             Relation relation = null;                        
             if(s-2>0)
             {
-                hif.Out(String.Format("last pair [{0}, {1}] ", this.data[s - 2], this.data[s - 1]));
+                //hif.Out(String.Format("last pair [{0}, {1}] ", this.data[s - 2], this.data[s - 1]));
                 switch (operation)
                 {
                     case operation.leftArc:

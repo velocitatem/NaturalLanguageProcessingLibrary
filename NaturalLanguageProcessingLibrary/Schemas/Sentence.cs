@@ -8,6 +8,12 @@ namespace NaturalLanguageProcessingLibrary.Schemas
 {
     public class Sentence
     {
+
+        /// <summary>
+        /// Create a new Sentence Object, which can then be passed to NLP modules
+        /// </summary>
+        /// <param name="words"></param>
+        /// <param name="original"></param>
         public Sentence(List<String> words, string original)
         {
             this.words = words;

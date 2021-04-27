@@ -27,14 +27,14 @@ namespace NaturalLanguageProcessingLibrary.Core.DependecyParser
                 if (operation.Equals(Oracle.operation.shift))
                 {
                     stack.add(sentence.next());
-                    new HIF("STEP").Out("added to stack");
+                    //new HIF("STEP").Out("added to stack");
                 }
                 else
                 {
                     Relation r = stack.executeOperations(operation);
                     if (r != null)
                     {
-                        new HIF("STEP").Out("executed " + operation);
+                        //new HIF("STEP").Out("executed " + operation);
                         relations.Add(r);
                     }
                 }
