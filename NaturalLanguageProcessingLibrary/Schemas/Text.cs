@@ -1,14 +1,13 @@
 ﻿using NaturalLanguageProcessingLibrary.Core.TextCleanup;
-using NaturalLanguageProcessingLibrary.Schemas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NaturalLanguageProcessingLibrary.Core
+namespace NaturalLanguageProcessingLibrary.Schemas
 {
-    class Text
+    public class Text
     {
         private string data { get; set; }
         private string[] dotSplitData { get; set; }
@@ -28,7 +27,7 @@ namespace NaturalLanguageProcessingLibrary.Core
                 foreach(String word in sentence.Split(" ")){
                     wordsList.Add(word);
                 }
-                sentences.Add(new Sentence(wordsList, this.data));
+                sentences.Add(new Sentence(wordsList, sentence));
             }
             return sentences;
         }
@@ -45,7 +44,7 @@ namespace NaturalLanguageProcessingLibrary.Core
                 {
                     wordsList.Add(word);
                 }
-                sentences.Add(new Sentence(wordsList, this.data));
+                sentences.Add(new Sentence(wordsList, cleanSentence));
             }
             return sentences;
         }

@@ -9,10 +9,11 @@ namespace NaturalLanguageProcessingLibrary.Core.TextCleanup
     public class TextProcessor
     {
 
-        private Cleaner[] cleaners = new Cleaner[] { new StopWordCleaner() };
+        private Cleaner[] cleaners = new Cleaner[] { new StopWordCleaner(), new NonVerbalCleaner() };
         public enum process
         {
-            stopWordClean = 0
+            stopWordClean = 0,
+            nonVerbalClean = 1
         }
 
 
