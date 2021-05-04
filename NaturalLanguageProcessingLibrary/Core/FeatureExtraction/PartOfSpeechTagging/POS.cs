@@ -89,6 +89,8 @@ namespace NaturalLanguageProcessingLibrary.Core.FeatureExtraction.PartOfSpeechTa
                         if (dt.Rows.Count > 0)
                         {
                             found = true;
+                            Tag[] tags1 = new Tag[dt.Rows.Count];
+                            int rowC = 0;
                             foreach (DataRow row in dt.Rows)
                             {
 
@@ -104,13 +106,48 @@ namespace NaturalLanguageProcessingLibrary.Core.FeatureExtraction.PartOfSpeechTa
                                     if (col.ColumnName.Equals("type"))
                                     {
 
-                                        tag = new TagInterpreter().match((string)row[col]);
+                                        tags1[rowC] = new TagInterpreter().match((string)row[col]);
                                     }
                                 }
+                                rowC += 1;
+
                             }
-                        }
-                        else
+
+
+                            Dictionary<Tag, int> keyValuePairs = new Dictionary<Tag, int>();
+                            List<Tag> doneTags = new List<Tag>();
+                            foreach(Tag tagi in tags1)
+                            {
+                                if(!doneTags.Contains(tagi))
+                                {
+                                    int c = 0;
+                                    foreach (Tag tagii in tags1)
+                                    {
+                                        c += tagii.Equals(tagi) ? 1 : 0;
+                                    }
+                                    keyValuePairs.Add(tagi, c);                                    
+                                    doneTags.Add(tagi);
+                                }
+                            }
+                            int hightestOcc = 0;
+                            Tag toptag = Tag.UNKNOWN;
+                            foreach(KeyValuePair<Tag, int> pair in keyValuePairs)
+                            {
+                                if(pair.Value > hightestOcc)
+                                {
+                                    toptag = pair.Key;
+                                    hightestOcc = pair.Value;
+                                }
+                            }
+                            tag = toptag;
+                        }                        
                         
+
+                        if(tag.Equals(Tag.UNKNOWN))
+                        {
+                            // guess based on previous and following types in tags[i_j];
+                        }
+
                         tags[i] = tag;
                     }
 

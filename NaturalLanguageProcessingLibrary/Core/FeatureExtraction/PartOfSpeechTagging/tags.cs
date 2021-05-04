@@ -20,6 +20,7 @@ namespace NaturalLanguageProcessingLibrary.Core.FeatureExtraction.PartOfSpeechTa
             }
             return String.Join(" ", txt);
         }
+        
         public Tag match(string text)
         {
             Tag[] tags = (Tag[])Enum.GetValues(typeof(Tag));
