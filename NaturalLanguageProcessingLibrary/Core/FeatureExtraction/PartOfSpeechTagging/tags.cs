@@ -21,6 +21,23 @@ namespace NaturalLanguageProcessingLibrary.Core.FeatureExtraction.PartOfSpeechTa
             return String.Join(" ", txt);
         }
         
+        public int[][] toVector(Tag[] tags)
+        {
+            Tag[] tagsM = (Tag[])Enum.GetValues(typeof(Tag));
+            int[][] tagVec = new int[tags.Length][];
+            int p = 0;
+            foreach(Tag tag in tags)
+            {
+                int[] vec = new int[tagsM.Length];
+                for (int ii = 0 ; ii < vec.Length; ii+=1) {
+                    vec[ii] = tagsM[ii].Equals(tag)?1:0;
+                }
+                tagVec[p] = vec;
+                p+= 1;
+            }
+            return tagVec;
+        }
+        
         public Tag match(string text)
         {
             Tag[] tags = (Tag[])Enum.GetValues(typeof(Tag));
