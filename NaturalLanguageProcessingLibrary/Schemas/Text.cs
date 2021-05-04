@@ -23,9 +23,9 @@ namespace NaturalLanguageProcessingLibrary.Schemas
             List<Sentence> sentences = new List<Sentence>();
             foreach (string sentence in this.dotSplitData)
             {
-                List<String> wordsList = new List<string>();
+                List<Word> wordsList = new List<Word>();
                 foreach(String word in sentence.Split(" ")){
-                    wordsList.Add(word);
+                    wordsList.Add(new Word(word));
                 }
                 sentences.Add(new Sentence(wordsList, sentence));
             }
@@ -38,11 +38,11 @@ namespace NaturalLanguageProcessingLibrary.Schemas
             TextProcessor textProcessor = new TextProcessor();
             foreach (string sentence in this.dotSplitData)
             {
-                List<String> wordsList = new List<string>();
+                List<Word> wordsList = new List<Word>();
                 String cleanSentence = textProcessor.CleanText(sentence, config);
                 foreach (String word in cleanSentence.Split(" "))
                 {
-                    wordsList.Add(word);
+                    wordsList.Add(new Word(word));
                 }
                 sentences.Add(new Sentence(wordsList, cleanSentence));
             }

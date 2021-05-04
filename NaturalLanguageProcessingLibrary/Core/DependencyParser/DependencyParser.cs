@@ -1,4 +1,5 @@
-﻿using NaturalLanguageProcessingLibrary.Dependencies;
+﻿using NaturalLanguageProcessingLibrary.Core.FeatureExtraction.PartOfSpeechTagging;
+using NaturalLanguageProcessingLibrary.Dependencies;
 using NaturalLanguageProcessingLibrary.Schemas;
 using System;
 using System.Collections.Generic;
@@ -15,14 +16,16 @@ namespace NaturalLanguageProcessingLibrary.Core.DependecyParser
         public DependencyTree Parse(Sentence sentence)
         {
             List<Relation> relations = new List<Relation>();
+            
 
-            Oracle oracle = new Oracle();
+            Oracle oracle = new Oracle(sentence);
             Stack stack = new Stack();
 
 //            hif.Out("Starting loop");
             while ( sentence.words.Count > 0) 
-            {                
-                Oracle.operation operation = oracle.evaluate(stack);
+            {
+                Console.WriteLine(String.Join(", ", stack.data));
+                Oracle.operation operation = oracle.evaluate(stack, sentence.words.Count);
 //                hif.Out(operation.ToString());
                 if (operation.Equals(Oracle.operation.shift))
                 {

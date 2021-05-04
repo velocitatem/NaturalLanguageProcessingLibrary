@@ -1,4 +1,5 @@
-﻿using NaturalLanguageProcessingLibrary.Dependencies;
+﻿using NaturalLanguageProcessingLibrary.Core.FeatureExtraction.PartOfSpeechTagging;
+using NaturalLanguageProcessingLibrary.Dependencies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,8 +20,8 @@ namespace NaturalLanguageProcessingLibrary.Schemas
         public Stack()
         {
             hif = new HIF("Stack");
-            this.data = new List<String>();
-            this.data.Add("root");
+            this.data = new List<Word>();
+            this.data.Add(new Word("root", Tag.NN));
         }
 
 
@@ -59,17 +60,17 @@ namespace NaturalLanguageProcessingLibrary.Schemas
             this.data.Remove(this.data[index]);
         }
 
-        public string[] topPair()
+        public Word[] topPair()
         {
-            return new string[] { data[data.Count-1], data[data.Count-2] };
+            return new Word[] { data[data.Count-1], data[data.Count-2] };
         }
 
-        public string get(int index)
+        public Word get(int index)
         {
             return data[index];
         }
 
-        public void add(string data)
+        public void add(Word data)
         {
             this.data.Add(data);
         }
@@ -84,7 +85,7 @@ namespace NaturalLanguageProcessingLibrary.Schemas
         {
             foreach(string dat in data)
             {
-                this.data.Add(dat);
+                this.data.Add(new Word(dat));
             }
         }
 
@@ -93,6 +94,6 @@ namespace NaturalLanguageProcessingLibrary.Schemas
             return String.Join(", ", data);
         }
 
-        public List<String> data { get; set; }
+        public List<Word> data { get; set; }
     }
 }

@@ -14,15 +14,15 @@ namespace NaturalLanguageProcessingLibrary.Schemas
             head
         }
 
-        public Relation(string a, string b, relation relationBetweenWords)
+        public Relation(Word a, Word b, relation relationBetweenWords)
         {
             this.a = a;
             this.b = b;
             this.relationBetweenWords = relationBetweenWords;
         }
 
-        public string a { get; set; }
-        public string b { get; set; }
+        public Word a { get; set; }
+        public Word b { get; set; }
         public relation relationBetweenWords { get; set; }
 
         public override string ToString()

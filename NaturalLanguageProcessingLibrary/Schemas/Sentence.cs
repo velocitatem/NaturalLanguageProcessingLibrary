@@ -14,19 +14,19 @@ namespace NaturalLanguageProcessingLibrary.Schemas
         /// </summary>
         /// <param name="words"></param>
         /// <param name="original"></param>
-        public Sentence(List<String> words, string original)
+        public Sentence(List<Word> words, string original)
         {
             this.words = words;
             this.original = original;
         }
 
-        public string next()
+        public Word next()
         {
-            string val = words[0].Trim();
+            Word val = words[0];
             words.Remove(words[0]);
             return val;
-        }
-        public List<String> words { get; set; }
+        }        
+        public List<Word> words { get; set; }
         public string original { get; set; }
     }
 }
